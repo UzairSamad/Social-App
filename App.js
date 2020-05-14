@@ -40,25 +40,25 @@ class App extends Component {
   render() {
     createHomeStack = () =>
       <Stack.Navigator>
-        <Stack.Screen name="Feed" component={Feed} />
-        <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
+        <Stack.Screen name="Detail" component={Detail}options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
         <Stack.Screen name="Top Tab" children={createTopTabs} />
         <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
       </Stack.Navigator>
 
-   let  createTopTabs = () => {
+    let createTopTabs = () => {
       return <MaterialTopTab.Navigator>
-        <MaterialTopTab.Screen name="Tab1" component={Tab1} />
-        <MaterialTopTab.Screen name="Tab2" component={Tab2} />
-        <MaterialTopTab.Screen name="Tab3" component={Tab3} />
+        <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
+        <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
+        <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
       </MaterialTopTab.Navigator>
     }
 
-  let   createBottomTabs = () => {
+    let createBottomTabs = () => {
       return <MaterialBottomTab.Navigator>
-        <MaterialBottomTab.Screen name="Tab1" component={Tab1} />
-        <MaterialBottomTab.Screen name="Tab2" component={Tab2} />
-        <MaterialBottomTab.Screen name="Tab3" component={Tab3} />
+        <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
+        <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
+        <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
       </MaterialBottomTab.Navigator>
 
     }
