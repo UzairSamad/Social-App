@@ -39,11 +39,29 @@ class App extends Component {
 
   render() {
     createHomeStack = () =>
-
       <Stack.Navigator>
         <Stack.Screen name="Feed" component={Feed} />
         <Stack.Screen name="Detail" component={Detail} />
+        <Stack.Screen name="Top Tab" children={createTopTabs} />
+        <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
       </Stack.Navigator>
+
+   let  createTopTabs = () => {
+      return <MaterialTopTab.Navigator>
+        <MaterialTopTab.Screen name="Tab1" component={Tab1} />
+        <MaterialTopTab.Screen name="Tab2" component={Tab2} />
+        <MaterialTopTab.Screen name="Tab3" component={Tab3} />
+      </MaterialTopTab.Navigator>
+    }
+
+  let   createBottomTabs = () => {
+      return <MaterialBottomTab.Navigator>
+        <MaterialBottomTab.Screen name="Tab1" component={Tab1} />
+        <MaterialBottomTab.Screen name="Tab2" component={Tab2} />
+        <MaterialBottomTab.Screen name="Tab3" component={Tab3} />
+      </MaterialBottomTab.Navigator>
+
+    }
 
 
     return (
