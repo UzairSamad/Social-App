@@ -61,9 +61,8 @@ const App = () => {
       {/* <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" }, headerTintColor: 'white', headerTitleAlign: 'center' }} /> */}
 
       {/* using default themes here*/}
-      <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed' }} />
-      <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details' }} />
-
+      <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed', headerTitleAlign: 'center' }} />
+      <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details', headerTitleAlign: 'center' }} />
 
       <Stack.Screen name="Top Tab" children={createTopTabs} />
       <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
@@ -79,9 +78,20 @@ const App = () => {
 
   let createBottomTabs = () => {
     return <MaterialBottomTab.Navigator>
-      <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
-      <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
-      <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
+      <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{  tabBarLabel: 'Chat',
+        tabBarIcon: () => (
+          <Icon style={[{ color: 'white' }]} size={25} name={'home'} />
+        )}} />
+      <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{   tabBarLabel: 'Status',
+        tabBarIcon: () => (
+          <Icon style={[{ color: 'white' }]} size={25} name={'status'} />
+        ) }} />
+      <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{
+        tabBarLabel: 'Call',
+        tabBarIcon: () => (
+          <Icon style={[{ color: 'white' }]} size={25} name={'call'} />
+        )
+      }} />
     </MaterialBottomTab.Navigator>
 
   }
