@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
-import { Text, View ,TouchableOpacity} from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 
-import {styles} from '../styles/styles'
+import { styles } from '../styles/styles'
+import { useNavigation,useRoute} from '@react-navigation/native'
 
-export default class Feed extends Component {
-    render() {
-        console.log(this.props)
-        return (
-            <View style={styles.center} >
-                <Text style={styles.title} > Feed Component </Text>
-                <TouchableOpacity style={styles.button} onPress={()=>{this.props.navigation.navigate('Detail')}} >
-                    <Text  style={{color:'white'}} >Go To Detail</Text>
-                </TouchableOpacity>
+const Feed = () => {
 
-            </View>
-        )
-    }
+   
+    const navigation = useNavigation() //YOU CAN SIMPLE NAVIGATE BY CALLING IT AND .NAVIGATE
+    const route  = useRoute() //RECEVING PROPS IN IT THROUGH MAIN APP COMPONENT NAVIGATIONS FUNC
+    
+    return (
+        <View style={styles.center} >
+            <Text style={styles.title} > {route.name} </Text>
+            <TouchableOpacity style={styles.button} onPress={() => { navigation.navigate('Detail') }} >
+                <Text style={{ color: 'white' }} >Go To Detail</Text>
+            </TouchableOpacity>
+
+        </View>
+    )
+
 }
+export default Feed

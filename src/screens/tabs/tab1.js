@@ -1,12 +1,16 @@
-import React, { Component } from 'react'
+import React  from 'react'
 import { Text, View } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
 
-export default class Tab1 extends Component {
-    render() {
-        return (
-            <View>
-                <Text>tab1 here </Text>
-            </View>
-        )
-    }
+
+
+const  Tab1 = () => {
+    const isFocused = useIsFocused()
+    console.log(isFocused)
+    return (
+        <View>
+            <Text>tab1 here </Text>
+        </View>
+    )
 }
+export default Tab1 

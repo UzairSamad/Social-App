@@ -41,7 +41,7 @@ class App extends Component {
     createHomeStack = () =>
       <Stack.Navigator>
         <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
-        <Stack.Screen name="Detail" component={Detail}options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
+        <Stack.Screen name="Detail"component={Detail} options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
         <Stack.Screen name="Top Tab" children={createTopTabs} />
         <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
       </Stack.Navigator>
