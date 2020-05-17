@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
-import {styles  } from '../../styles/styles'
+import { Text, View, Button } from 'react-native'
+import { styles } from '../../styles/styles'
 
-export default class Screen3 extends Component {
-    render() {
-        return (
-            <View  style={styles.center}>
+const Screen3 = () => {
+    const [screenMode, setScreenMode] = React.useState(true)
+    
+    console.log(screenMode)
+    return (
+        <View style={styles.center}>
             <Text style={styles.text}> Setting </Text>
+            <Button title='Switch To Dark mode' onPress={(screenMode) => { setScreenMode(!screenMode)}} />
         </View>
-        )
-    }
+    )
 }
+
+export default Screen3

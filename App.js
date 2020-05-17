@@ -15,11 +15,15 @@ import Feed from './src/component/feed'
 
 
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+
+// apperance library for themeing app
+import { Appearance, useColorScheme, AppearanceProvider } from 'react-native-appearance'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 
@@ -35,38 +39,59 @@ const MaterialTopTab = createMaterialTopTabNavigator()
 
 
 
-class App extends Component {
-
-  render() {
-    createHomeStack = () =>
-      <Stack.Navigator>
-        <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
-        <Stack.Screen name="Detail"component={Detail} options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" },headerTintColor:'white',headerTitleAlign:'center' }} />
-        <Stack.Screen name="Top Tab" children={createTopTabs} />
-        <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
-      </Stack.Navigator>
-
-    let createTopTabs = () => {
-      return <MaterialTopTab.Navigator>
-        <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
-        <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
-        <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
-      </MaterialTopTab.Navigator>
-    }
-
-    let createBottomTabs = () => {
-      return <MaterialBottomTab.Navigator>
-        <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
-        <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
-        <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
-      </MaterialBottomTab.Navigator>
-
-    }
+const App = () => {
+  const colorScheme = useColorScheme()
+  const MyTheme = {
+    dark: false,
+    colors: {
+      primary: 'purple',
+      background: 'rgb(242, 242, 242)',
+      card: 'black',
+      text: 'white',
+      border: 'green',
+    },
+  };
 
 
-    return (
+  createHomeStack = () =>
+    <Stack.Navigator>
+      {/* you can set custom colors by declarng props  uncomment below to see custom colors */}
 
-      <NavigationContainer>
+      {/* <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed', headerStyle: { backgroundColor: "#0081ff" }, headerTintColor: 'white', headerTitleAlign: 'center' }} />  */}
+      {/* <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" }, headerTintColor: 'white', headerTitleAlign: 'center' }} /> */}
+
+      {/* using default themes here*/}
+      <Stack.Screen name="Feed" component={Feed} options={{ title: 'My Feed' }} />
+      <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details' }} />
+
+
+      <Stack.Screen name="Top Tab" children={createTopTabs} />
+      <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
+    </Stack.Navigator>
+
+  let createTopTabs = () => {
+    return <MaterialTopTab.Navigator>
+      <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
+      <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
+      <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
+    </MaterialTopTab.Navigator>
+  }
+
+  let createBottomTabs = () => {
+    return <MaterialBottomTab.Navigator>
+      <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
+      <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
+      <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
+    </MaterialBottomTab.Navigator>
+
+  }
+
+
+  return (
+
+    <AppearanceProvider>
+      <NavigationContainer theme={colorScheme == 'dark' ? DarkTheme : MyTheme}>
+
         <Drawer.Navigator>
           <Drawer.Screen name='Home' children={createHomeStack} />
           <Drawer.Screen name='Contact' component={Screen1} />
@@ -75,9 +100,12 @@ class App extends Component {
         </Drawer.Navigator>
       </NavigationContainer>
 
+    </AppearanceProvider>
 
-    )
-  }
+
+
+  )
+
 }
 
 export default App

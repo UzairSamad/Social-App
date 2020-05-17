@@ -9,7 +9,7 @@ const Feed = () => {
    
     const navigation = useNavigation() //YOU CAN SIMPLE NAVIGATE BY CALLING IT AND .NAVIGATE
     const route  = useRoute() //RECEVING PROPS IN IT THROUGH MAIN APP COMPONENT NAVIGATIONS FUNC
-    
+
     return (
         <View style={styles.center} >
             <Text style={styles.title} > {route.name} </Text>
