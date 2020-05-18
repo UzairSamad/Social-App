@@ -1,20 +1,38 @@
 import React, { Component } from 'react'
-import { Text, View ,StyleSheet} from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import * as firebase from 'firebase'
+
 
 export default class HomeScreen extends Component {
+    state = {
+        email:'',
+        displayName: ''
+    }
+
+    componentDidMount() {
+        const { email, displayName } = firebase.auth().currentUser
+        this.setState({ email, displayName })
+    }
+    signOut = () => {
+        firebase.auth().signOut()
+    }
     render() {
         return (
             <View style={styles.container}>
-                <Text>Home</Text>
+                <Text>Hi {this.state.email} </Text>
+                <TouchableOpacity style={{ marginTop: 32 }} onPress={this.signOut}>
+                    <Text>Log Out</Text>
+                </TouchableOpacity>
             </View>
+
         )
     }
 }
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        justifyContent:'center',
-        alignItems:'center'
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })

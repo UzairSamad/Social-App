@@ -64,7 +64,7 @@ const App = () => {
     colors: {
       primary: 'purple',
       background: 'rgb(242, 242, 242)',
-      card: 'black',
+      card: '#E9446A',
       text: 'white',
       border: 'green',
     },
@@ -79,8 +79,9 @@ const App = () => {
       {/* <Stack.Screen name="Detail" component={Detail} options={{ title: 'Details', headerStyle: { backgroundColor: "#0081ff" }, headerTintColor: 'white', headerTitleAlign: 'center' }} /> */}
 
       {/* using default themes here*/}
-      <Stack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Loading', headerTitleAlign: 'center' }} />
-      <Stack.Screen name="Auth" component={LoginScreen} options={{ title: 'LoginHere', headerTitleAlign: 'center' }} />
+      {/* <Stack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Loading', headerTitleAlign: 'center' }} /> */}
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown:false}} />
+      <Stack.Screen name="Register" component={RegisterScreen}  options={{ headerShown:false}}/>
       <Stack.Screen name="App" component={HomeScreen} options={{ title: 'Home', headerTitleAlign: 'center' }} />
 
 
