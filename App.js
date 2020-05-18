@@ -24,12 +24,13 @@ import RegisterScreen from './src/screens/Register'
 import LoadingScreen from './src/screens/LoadingScreen'
 import HomeScreen from './src/screens/HomeScreen'
 
-import Tab1 from './src/screens/tabs/tab1'
-import Tab2 from './src/screens/tabs/tab2'
-import Tab3 from './src/screens/tabs/tab3'
 
-import Detail from './src/component/detail'
-import Feed from './src/component/feed'
+import PostScreen from  './src/screens/PostScreen'
+import NotificationScreen from  './src/screens/NotificationScreen'
+import MessageScreen from  './src/screens/MessageScreen'
+
+
+
 
 
 
@@ -41,7 +42,8 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 // apperance library for themeing app
 import { Appearance, useColorScheme, AppearanceProvider } from 'react-native-appearance'
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import {HomeOutlined} from '@ant-design/icons'
 
 
 
@@ -70,7 +72,18 @@ const App = () => {
     },
   };
 
-
+  let createBottomTabs = () => {
+    return <MaterialBottomTab.Navigator>
+      <MaterialBottomTab.Screen name="Post" component={PostScreen} options={{  tabBarLabel: 'Post',
+        }} />
+      <MaterialBottomTab.Screen name="Notification" component={NotificationScreen} options={{   tabBarLabel: 'Notification',
+        }} />
+      <MaterialBottomTab.Screen name="Message" component={MessageScreen} options={{
+        tabBarLabel: 'Message',
+       
+      }} />
+    </MaterialBottomTab.Navigator>
+ }
   createHomeStack = () =>
     <Stack.Navigator>
       {/* you can set custom colors by declarng props  uncomment below to see custom colors */}
@@ -80,42 +93,23 @@ const App = () => {
 
       {/* using default themes here*/}
       {/* <Stack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Loading', headerTitleAlign: 'center' }} /> */}
+      <Stack.Screen name="App"  children={createBottomTabs} options={{ title: 'Home', headerTitleAlign: 'center' }} />
       <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown:false}} />
       <Stack.Screen name="Register" component={RegisterScreen}  options={{ headerShown:false}}/>
-      <Stack.Screen name="App" component={HomeScreen} options={{ title: 'Home', headerTitleAlign: 'center' }} />
+     
 
 
-      <Stack.Screen name="Top Tab" children={createTopTabs} />
-      <Stack.Screen name="Bottom Tab" children={createBottomTabs} />
+      {/* <Stack.Screen name="Top Tab" children={createTopTabs} />
+      <Stack.Screen name="Bottom Tab" children={createBottomTabs} /> */}
     </Stack.Navigator>
 
-  let createTopTabs = () => {
-    return <MaterialTopTab.Navigator>
-      <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
-      <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
-      <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
-    </MaterialTopTab.Navigator>
-  }
-
-  let createBottomTabs = () => {
-    return <MaterialBottomTab.Navigator>
-      <MaterialBottomTab.Screen name="Tab1" component={Tab1} options={{  tabBarLabel: 'Chat',
-        tabBarIcon: () => (
-          <Icon style={[{ color: 'white' }]} size={25} name={'home'} />
-        )}} />
-      <MaterialBottomTab.Screen name="Tab2" component={Tab2} options={{   tabBarLabel: 'Status',
-        tabBarIcon: () => (
-          <Icon style={[{ color: 'white' }]} size={25} name={'status'} />
-        ) }} />
-      <MaterialBottomTab.Screen name="Tab3" component={Tab3} options={{
-        tabBarLabel: 'Call',
-        tabBarIcon: () => (
-          <Icon style={[{ color: 'white' }]} size={25} name={'call'} />
-        )
-      }} />
-    </MaterialBottomTab.Navigator>
-
-  }
+  // let createTopTabs = () => {
+  //   return <MaterialTopTab.Navigator>
+  //     <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
+  //     <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
+  //     <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
+  //   </MaterialTopTab.Navigator>
+  // }
 
 
   return (
