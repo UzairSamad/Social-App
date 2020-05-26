@@ -1,19 +1,26 @@
-
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, StatusBar } from 'react-native'
+import { Text, View, StyleSheet, StatusBar, SafeAreaView, TouchableOpacity, TextInput, Image } from 'react-native'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+
 
 export default class PostScreen extends Component {
     render() {
         return (
-            <View style={styles.container}>
+            <SafeAreaView style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={{color:'white', fontSize:20,  fontWeight:'5px'}}>Post</Text>
+                    <TouchableOpacity>
+                        <MaterialIcon style={[{ color: 'lightgrey' }]} size={25} name='arrow-back' />
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <Text style={{ fontSize: 20, fontWeight: '5px' }}> Post</Text>
+                    </TouchableOpacity>
                 </View>
-                <View style={styles.inner} >
-
-                    <Text> PostScreen 3 here </Text>
+                <View style={styles.inner}>
+                    <Image source={require('../images/bg.jpg')} style={styles.avatar} />
+                    <TextInput autoFocus={true} multiline={true} numberOfLines={4} style={{ flexl: 1, marginTop: -20 }} placeholder='Want to share something...'>
+                    </TextInput>
                 </View>
-            </View>
+            </SafeAreaView>
 
         )
     }
@@ -21,22 +28,27 @@ export default class PostScreen extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-       
+
     },
     header: {
-     borderBottomColor:'black',
-     borderBottomWidth:0.2,
-     shadowOpacity:20,
-     shadowColor:'grey',
-     padding:15,
-     backgroundColor:'#E9446A',
-     alignItems:'center',
-    
-     },
-    inner:{
-        flex: 1,
-        justifyContent:'center',
-        alignItems:'center',
-       
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+        paddingVertical: 12,
+        borderWidth: 1,
+        borderColor: "#D8D9DB"
+
+
+    },
+    inner: {
+        margin: 18,
+        flexDirection: 'row'
+
+    },
+    avatar: {
+        width: 52,
+        height: 52,
+        borderRadius: 24,
+        marginRight: 12,
     }
 })

@@ -16,7 +16,7 @@ export default class HomeScreen extends Component {
     // }
     signOut = () => {
         firebase.auth().signOut()
-        this.props.navigation.navigate('Login')
+        // this.props.navigation.navigate('Login')
         console.log("clicked")
     }   
     render() {

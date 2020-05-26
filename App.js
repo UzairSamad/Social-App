@@ -117,7 +117,7 @@ const App = () => {
 
       {/* using default themes here*/}
       {/* <Stack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Loading', headerTitleAlign: 'center' }} /> */}
-      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+      {/* <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} /> */}
       <Stack.Screen name="App" children={createBottomTabs} options={{ headerShown: false }} />
       <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
 
@@ -143,9 +143,7 @@ const App = () => {
 
         <Stack.Navigator>
           <Stack.Screen name='Home' children={createHomeStack} options={{ headerShown: false }} />
-          {/* <Drawer.Screen name='Contact' component={Screen1} />
-          <Drawer.Screen name='Favourite' component={Screen2} />
-          <Drawer.Screen name='Settings' component={Screen3} /> */}
+         
         </Stack.Navigator>
       </NavigationContainer>
 
