@@ -5,8 +5,8 @@ import 'react-native-gesture-handler';
 //setting up firebase
 import * as firebase from 'firebase'
 
- // Firebase configuration
- var firebaseConfig = {
+// Firebase configuration
+var firebaseConfig = {
   apiKey: "AIzaSyCkPI2qcOkDZSVltrv-bfi1U2S4ntQnsNM",
   authDomain: "socialapp-690ef.firebaseapp.com",
   databaseURL: "https://socialapp-690ef.firebaseio.com",
@@ -25,9 +25,10 @@ import LoadingScreen from './src/screens/LoadingScreen'
 import HomeScreen from './src/screens/HomeScreen'
 
 
-import PostScreen from  './src/screens/PostScreen'
-import NotificationScreen from  './src/screens/NotificationScreen'
-import MessageScreen from  './src/screens/MessageScreen'
+import PostScreen from './src/screens/PostScreen'
+import NotificationScreen from './src/screens/NotificationScreen'
+import MessageScreen from './src/screens/MessageScreen'
+import ProfileScreen from './src/screens/ProfileScreen'
 
 
 
@@ -42,8 +43,10 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 
 // apperance library for themeing app
 import { Appearance, useColorScheme, AppearanceProvider } from 'react-native-appearance'
-// import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import {HomeOutlined} from '@ant-design/icons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialIcon from 'react-native-vector-icons/MaterialIcons'
+
+import { HomeOutlined } from '@ant-design/icons'
 
 
 
@@ -54,17 +57,12 @@ const MaterialTopTab = createMaterialTopTabNavigator()
 
 
 
-
-
-
-
-
 const App = () => {
   const colorScheme = useColorScheme()
   const MyTheme = {
     dark: false,
     colors: {
-      primary: 'purple',
+      primary: '#E9446A',
       background: 'rgb(242, 242, 242)',
       card: '#E9446A',
       text: 'white',
@@ -73,17 +71,43 @@ const App = () => {
   };
 
   let createBottomTabs = () => {
+
     return <MaterialBottomTab.Navigator>
-      <MaterialBottomTab.Screen name="Post" component={PostScreen} options={{  tabBarLabel: 'Post',
-        }} />
-      <MaterialBottomTab.Screen name="Notification" component={NotificationScreen} options={{   tabBarLabel: 'Notification',
-        }} />
+
+      <MaterialBottomTab.Screen name="HomeScreen" component={HomeScreen} options={{ title:'Home',  headerStyle: { backgroundColor: "#0081ff" }, headerTintColor: 'white', headerTitleAlign: 'center',
+        tabBarLabel: 'Home',
+        tabBarIcon: () => (
+          <Icon style={[{ color: 'white' }]} size={25} name='home' />
+        )
+      }} />
+
+
+      <MaterialBottomTab.Screen name="Notification" component={NotificationScreen} options={{
+        tabBarLabel: 'Notification',
+        tabBarIcon: () => (
+          <MaterialIcon style={[{ color: 'white' }]} size={25} name='notifications' />
+        )
+      }} />
+      <MaterialBottomTab.Screen name="Post" component={PostScreen} options={{
+        tabBarLabel: 'Post',
+        tabBarIcon: () => (
+          <MaterialIcon style={[{ color: 'white' }]} size={25} name='add-circle-outline' />
+        )
+      }} />
       <MaterialBottomTab.Screen name="Message" component={MessageScreen} options={{
         tabBarLabel: 'Message',
-       
+        tabBarIcon: () => (
+          <Icon style={[{ color: 'white' }]} size={25} name='wechat' />
+        )
+      }} />
+      <MaterialBottomTab.Screen name="Profile" component={ProfileScreen} options={{
+        tabBarLabel: 'Profile',
+        tabBarIcon: () => (
+          <MaterialIcon style={[{ color: 'white' }]} size={25} name='person-outline' />
+        )
       }} />
     </MaterialBottomTab.Navigator>
- }
+  }
   createHomeStack = () =>
     <Stack.Navigator>
       {/* you can set custom colors by declarng props  uncomment below to see custom colors */}
@@ -93,10 +117,10 @@ const App = () => {
 
       {/* using default themes here*/}
       {/* <Stack.Screen name="Loading" component={LoadingScreen} options={{ title: 'Loading', headerTitleAlign: 'center' }} /> */}
-      <Stack.Screen name="App"  children={createBottomTabs} options={{ title: 'Home', headerTitleAlign: 'center' }} />
-      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown:false}} />
-      <Stack.Screen name="Register" component={RegisterScreen}  options={{ headerShown:false}}/>
-     
+      <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="App" children={createBottomTabs} options={{ headerShown: false }} />
+      <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+
 
 
       {/* <Stack.Screen name="Top Tab" children={createTopTabs} />
@@ -117,12 +141,12 @@ const App = () => {
     <AppearanceProvider>
       <NavigationContainer theme={colorScheme == 'dark' ? DarkTheme : MyTheme}>
 
-        <Drawer.Navigator>
-          <Drawer.Screen name='Home' children={createHomeStack} />
+        <Stack.Navigator>
+          <Stack.Screen name='Home' children={createHomeStack} options={{ headerShown: false }} />
           {/* <Drawer.Screen name='Contact' component={Screen1} />
           <Drawer.Screen name='Favourite' component={Screen2} />
           <Drawer.Screen name='Settings' component={Screen3} /> */}
-        </Drawer.Navigator>
+        </Stack.Navigator>
       </NavigationContainer>
 
     </AppearanceProvider>

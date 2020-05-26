@@ -19,7 +19,8 @@ export default class LoginScreen extends Component {
     handleLogin = () => {
         this.setState({ isLoading: true })
         const { email, password } = this.state
-        firebase.auth().signInWithEmailAndPassword(email.trim(), password)
+        firebase.auth().signInWithEmailAndPassword(email.trim(), password).then(
+            this.props.navigation.navigate('App'))
             .catch(error => this.setState({ errorMessage: error.message, isLoading: false }))
 
 
@@ -55,6 +56,7 @@ export default class LoginScreen extends Component {
                         <Text style={{ color: '#FFF', fontWeight: "500" }}>Sign in</Text>
                     </TouchableOpacity>
                 }
+
 
                 <TouchableOpacity style={{ alignSelf: "center", marginTop: 32 }} onPress={() => { this.props.navigation.navigate('Register') }}>
                     <Text style={{ color: '#414959', fontWeight: "13" }}>
