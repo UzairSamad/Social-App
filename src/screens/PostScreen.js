@@ -13,7 +13,7 @@ export default class PostScreen extends Component {
     }
 
     handlePost =()=>{
-        Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
+            Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
         .then(ref =>{
             this.setState({text:"",image:null})
             this.props.naigation.goBack()
@@ -104,7 +104,7 @@ export default class PostScreen extends Component {
                 <View style={styles.inner}>
                     <Image source={require('../images/bg.jpg')} style={styles.avatar} />
                     <TextInput autoFocus={true} multiline={true} numberOfLines={4} style={{ flexl: 1, marginTop: -20 }} 
-                    placeholder='Want to share something...' onChange={(e)=>{this.setState({text:e.target.value})}}>
+                    placeholder='Want to share something...' onChangeText={text=>this.setState({text})}>
                     </TextInput>
                 </View>
                 <TouchableOpacity style={styles.camera} onPress={() => { this.pickImage() }}>

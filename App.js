@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Button } from 'react-native'
 import 'react-native-gesture-handler';
+import FireBaseKeys from './src/config'
 
 //setting up firebase
 import * as firebase from 'firebase'
