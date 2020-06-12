@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity ,FlatList,Image} from 'react-native'
 import * as firebase from 'firebase'
+import posts from './postdata'
 
 
 export default class HomeScreen extends Component {
@@ -19,18 +20,33 @@ export default class HomeScreen extends Component {
         // this.props.navigation.navigate('Login')
         console.log("clicked")
     }   
+
+    renderPost= post =>{
+        return(
+            <View>
+                <Image source={post.avatar} style={styles.avatar}/>
+            </View>
+        )
+    }
    
     render() {
         
         return (
             <View style={styles.container}>
-                <View style={styles.header}>
+                {/* <View style={styles.header}>
                 <Text style={{color:'white', fontSize:20,  fontWeight:'5px'}}>Home</Text>
                 </View>
                 <View style={styles.inner} >
                     <Text> Home  here </Text>
                     <TouchableOpacity onPress={()=>{this.signOut()}}><Text>signOut</Text></TouchableOpacity>
-                </View>
+                </View> */}
+                <FlatList
+                 style={styles.feed}
+                  data={post} 
+                   renderItem={({item})=>this.renderPost(item)}
+                   keyExtractor={item => item.id}
+                   showsVerticalScrollIndicator={false}
+                   />
             </View>
 
         )
@@ -56,6 +72,23 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
        
+    },
+    feed:{
+        marginHorizontal:16
+
+    },
+    feedItem:{
+        backgroundColor:'#FFF',
+        borderRadius:5,
+        padding:8,
+        flexDirection:'row',
+        marginVertical:8
+    },
+    avatar:{
+        width:36,
+        height:36,
+        borderRadius:18,
+        marginRight:16
     }
 })
 
