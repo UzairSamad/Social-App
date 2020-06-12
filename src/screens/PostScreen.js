@@ -11,16 +11,20 @@ export default class PostScreen extends Component {
         fileUri: '',
         text:''
     }
+ 
 
     handlePost =()=>{
        
-        Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
-        .then(ref =>{
-            this.setState({text:"",image:null})
-            this.props.naigation.goBack()
-        }).catch(err=>{
-            alert(err)
-        })
+        var post = []
+        post.push(this.state.text)
+        this.props.navigation.goBack({data:post})
+        // Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
+        // .then(ref =>{
+        //     this.setState({text:"",image:null})
+        //     this.props.naigation.goBack()
+        // }).catch(err=>{
+        //     alert(err)
+        // })
 
     }
 

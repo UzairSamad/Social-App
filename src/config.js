@@ -1,7 +1,7 @@
 const  FirebaseKeys = {
     apiKey: "AIzaSyCkPI2qcOkDZSVltrv-bfi1U2S4ntQnsNM",
     authDomain: "socialapp-690ef.firebaseapp.com",
-    databaseURL: "http://socialapp-690ef.firebaseio.com",
+    databaseURL: "https://socialapp-690ef.firebaseio.com",
     projectId: "socialapp-690ef",
     storageBucket: "socialapp-690ef.appspot.com",
     messagingSenderId: "13813232837",

@@ -19,7 +19,9 @@ export default class HomeScreen extends Component {
         // this.props.navigation.navigate('Login')
         console.log("clicked")
     }   
+   
     render() {
+        
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
