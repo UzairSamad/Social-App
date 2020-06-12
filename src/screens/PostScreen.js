@@ -13,7 +13,8 @@ export default class PostScreen extends Component {
     }
 
     handlePost =()=>{
-            Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
+       
+        Fire.shared.addPost({text:this.state.text.trim(),localUri:this.state.image})
         .then(ref =>{
             this.setState({text:"",image:null})
             this.props.naigation.goBack()

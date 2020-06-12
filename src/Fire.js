@@ -1,5 +1,6 @@
 import FirebaseKeys from './config'
-import firebase from 'firebase'
+import  firebase from 'firebase'
+import '@firebase/firestore'
 
 class Fire{
     
@@ -8,9 +9,10 @@ class Fire{
     }
 
     addPost = async ({text,localUri})=>{
-        const remoteUri = await this.uploadPhoto(localUri)
+        console.log('invoked add post')
+        const remoteUri = await this.uploadPhotoAsync(localUri) 
         return new Promise((res,rej)=>{
-            this.firestore.collection("posts").add({
+        firebase.firestore().collection("posts").add({
                 text,
                 uid:this.uid,
                 timestamp:this.timestamp,
@@ -25,33 +27,52 @@ class Fire{
         })
       }
 
-      uploadPhoto = async uri =>{
-          const path = `photos/${this.uid}/${Date.now()}.jpg`
+      uploadPhotoAsync = async uri =>{
+          const path = `photos/ ${this.uid}/${Date.now()}.jpg`
+          return new Promise(async(res,rej)=>{
 
-          return  async()=> {
               const response = await fetch(uri)
               const file = await response.blob()
 
+              
               let upload = firebase .storage().ref(path).put(file)
               upload.on(
                   "state_changed",
                   snapshot=>{},
                   err =>{
-                    //   rej(err)
+                      rej(err)
                   },
                   async()=>{
                       const url = await upload.snapshot.ref.getDownloadURL
-                    //   res(url)
+                      res(url)
                   }
               )
-          }
+          })
+
+        //   return  async()=> {
+        //       const response = await fetch(uri)
+        //       const file = await response.blob()
+
+        //       let upload = firebase .storage().ref(path).put(file)
+        //       upload.on(
+        //           "state_changed",
+        //           snapshot=>{},
+        //           err =>{
+        //             //   rej(err)
+        //           },
+        //           async()=>{
+        //               const url = await upload.snapshot.ref.getDownloadURL
+        //             //   res(url)
+        //           }
+        //       )
+        //   }
       }
 
-    get firestore(){
-        return firebase.firestore()
-    }
+    // get firestore(){
+    //     return firebase.firestore()
+    // }
 
-    get ui(){
+    get uid(){
         return (firebase.auth().currentUser || {}).uid;
     }
 
