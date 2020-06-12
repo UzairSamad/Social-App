@@ -1,17 +1,16 @@
 
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, StatusBar } from 'react-native'
+import { Text, View, StyleSheet, StatusBar ,Image} from 'react-native'
 
 export default class ProfileScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.header}>
-                <Text style={{color:'white', fontSize:20,  fontWeight:'5px'}}>Profile</Text>
-                </View>
-                <View style={styles.inner} >
-
-                    <Text> ProfileScreen 3 here </Text>
+                <View style={{marginTop:64,alignItems:'center'}}>
+                    <View style={styles.avatarContainer}>
+                       <Image style={styles.avatar} source={require('../images/me.jpg')} />                  
+                    </View>
+                    <Text style={styles.username}>Muhammad Uzair</Text>
                 </View>
             </View>
 
@@ -38,5 +37,20 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
        
+    },
+    avatarContainer:{
+        shadowColor:'#151734',
+        shadowRadius:30,
+        shadowOpacity:0.4
+    },
+    avatar:{
+        width:136,
+        height:136,
+        borderRadius:68
+    },
+    username:{
+        marginTop:24,
+        fontSize:16,
+        fontWeight:"600"
     }
 })
