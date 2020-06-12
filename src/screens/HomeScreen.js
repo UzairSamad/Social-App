@@ -23,8 +23,17 @@ export default class HomeScreen extends Component {
 
     renderPost= post =>{
         return(
-            <View>
+            <View style={styles.feedItem}> 
                 <Image source={post.avatar} style={styles.avatar}/>
+                <View style={{flex:1}}>
+                    <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center'}}>
+                        <View>
+                            <Text>{post.name}</Text>
+                            <Text>{post.timestamp}</Text>
+                        </View>
+
+                    </View>
+                </View>
             </View>
         )
     }
@@ -42,7 +51,7 @@ export default class HomeScreen extends Component {
                 </View> */}
                 <FlatList
                  style={styles.feed}
-                  data={post} 
+                  data={posts} 
                    renderItem={({item})=>this.renderPost(item)}
                    keyExtractor={item => item.id}
                    showsVerticalScrollIndicator={false}
