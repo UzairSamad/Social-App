@@ -12,6 +12,8 @@ const notifications = [
         text:'Invited you for a pubg' ,
         timestamp:'2 hours ago',
         avatar: require('../images/murshid.jpg'),
+        image: require('../images/image1.webp')
+
     },
     {
         id:'2',

@@ -9,23 +9,31 @@ export default class NotificationScreen extends Component {
     renderNotifications = post => {
         return (
             <View style={styles.feedItem}>
-            <Image source={post.avatar} style={styles.avatar} />
-            <View style={{ flex: 1 }}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <View>
-                        <Text style={styles.name}>{post.name}</Text>
-                        {/* <Text style={styles.timestamp}>{}</Text> */}
+                <Image source={post.avatar} style={styles.avatar} />
+                <View style={{ flex: 1 }}>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <View>
+                            <Text style={styles.name}>{post.name}</Text>
+                            {/* <Text style={styles.timestamp}>{}</Text> */}
+                        </View>
+                        <Text style={styles.timestamp}>{post.timestamp}</Text>
                     </View>
-                    <Text style={styles.timestamp}>{post.timestamp}</Text>
+                    <View>
+
+                        <View style={{ flex: 1  }}>
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                            {post.text && <Text style={styles.post} style={{ marginTop: 5 }}> {post.text}</Text>}
+
+{post.image && <Image source={post.image} style={styles.notificationImage} resizeMode="cover" />}
+                            </View>
+
+                           
+                        </View>
+
+                    </View>
+
                 </View>
-                <View>
-                {post.text && <Text style={styles.post} style={{marginTop:5}}> {post.text}</Text>}
-    
-    {post.image && <Image source={post.image} style={styles.avatar} resizeMode="cover" />}
-                </View>
-                
             </View>
-        </View>
         )
     }
     render() {
@@ -84,6 +92,14 @@ const styles = StyleSheet.create({
         height: 38,
         borderRadius: 18,
         marginRight: 14
+    },
+    notificationImage:{
+
+        width: 38,
+        height: 38,
+        borderRadius: 12,
+        marginRight: 14,
+        marginTop:5
     },
     timestamp: {
         fontSize: 11,
