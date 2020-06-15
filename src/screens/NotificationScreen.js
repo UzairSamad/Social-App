@@ -83,9 +83,9 @@ const styles = StyleSheet.create({
     feedItem: {
         backgroundColor: '#FFF',
         borderRadius: 5,
-        padding: 8,
+        padding: 5,
         flexDirection: 'row',
-        marginVertical: 8
+        marginVertical: 4
     },
     avatar: {
         width: 38,
