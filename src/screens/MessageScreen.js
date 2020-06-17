@@ -26,10 +26,10 @@ export default class NotificationScreen extends Component {
                         <View style={{ flex: 1 }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                                 {post.text &&
-                                    <Text style={styles.post} style={{ marginTop: 5 }}>
+                                    <Text style={styles.post} >
                                         {post.deliverd === true ?
-                                            <CheckIcon name={'check-all'} style={{ color: '#C4C6CE' }} size={20}/> :
-                                            <CheckIcon name={'check-all'} style={{ color: '#0069d9' }}  size={20}/>
+                                            <CheckIcon name={'check-all'} style={{ color: '#C4C6CE' }} size={20} /> :
+                                            <CheckIcon name={'check-all'} style={{ color: '#0069d9' }} size={20} />
                                         }
                                         {post.text}</Text>}
 
@@ -110,16 +110,15 @@ const styles = StyleSheet.create({
     },
     name: {
         fontSize: 15,
-        color: '#454d65',
+        color: '#000000',
         fontWeight: "500",
 
 
     },
     post: {
-        marginTop: 16,
+        marginTop: 4,
         fontSize: 14,
-        color: '#838899'
-
+        color: '#454d65',
     },
     postImage: {
         width: undefined,

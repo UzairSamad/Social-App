@@ -1,79 +1,86 @@
 const Data = [
     {
         id:'1',
-        name:'Muhammad Uzair',
-        text:'Hey , Muhammad we have new security options for you',
-        timestamp:'9 minutes ago',
+        name:'Front-End Squad',
+        lastMessage:'han bhai apky bhai ny msla nikal diya',
+        lastMessageSender:'Uzair',
         avatar: require('../images/react-native.png'),
-    },
-    {
-        id:'2',
-        name:'Murshid',
-        text:'Invited you for a pubg' ,
-        timestamp:'2 hours ago',
-        avatar: require('../images/murshid.jpg'),
-        image: require('../images/image1.webp')
+        badge:1
 
     },
     {
         id:'2',
-        name:'Sinan Lakhani',
-        text:'sent you gift for candycrush' ,
-        timestamp:'just now',
+        name:'React Developers',
+        lastMessage:'Hey , Have you tried the new hooks in your app?',
+        lastMessageSender:'Arshad Bhai',
         avatar: require('../images/react-native.png'),
+        badge:5
+
+    },
+    {
+        id:'2',
+        name:'React-Native Developers',
+        lastMessage:'Kindly Rate My App',
+        lastMessageSender:'M.Uzair',
+        avatar: require('../images/react-native.png'),
+        badge:3
+
     }
     ,
     {
         id:'3',
-        name:'Muhammad Arshad Khan',
-        text:'liked your photo' ,
-        timestamp:'yestarday',
-        avatar: require('../images/profile1.jpg'),
-        image: require('../images/image1.webp')
+        name:'Zoom Online Class',
+        lastMessage:'Class will be at 11:am today',
+        lastMessageSender:'Teacher',
+        avatar: require('../images/react-native.png'),
     },
     {
         id:'4',
-        name:'Muhammad Arshad Khan',
-        text:'Commented on a video you shared' ,
-        timestamp:'yestarday',
+        name:'Mandi Scene',
+        lastMessage:'han jani bhai ka janwar lyny chlo gy na' ,
+        lastMessageSender:'Uzair',
         avatar: require('../images/profile1.jpg'),
         
     },
     {
         id:'5',
-        name:'Murshid',
-        text:'Shared your post' ,
-        timestamp:'3 days ago',
-        avatar: require('../images/profile1.jpg'),
+        name:'Cousins',
+        lastMessage:'Cricket scene kryn kiya!!',
+        lastMessageSender:'Wahab',
+        avatar: require('../images/react-native.png'),
+        badge:5
+
     },
     {
         id:'6',
-        name:'Muhammad Arshad Khan',
-        text:'liked your photo' ,
-        timestamp:'yestarday',
-        avatar: require('../images/profile1.jpg'),
-        image: require('../images/image1.webp')
+        name:'College Buddies',
+        lastMessage:'Guys!I think we should plan a meet up',
+        lastMessageSender:'Bob',
+        avatar: require('../images/react-native.png'),
     },
     {
         id:'7',
-        name:'Sinan Lakhani',
-        text:'tagged you in a image' ,
-        timestamp:'yestarday',
+        name:'Friends Forever',
+        lastMessage:'or bhai sb set h na ' ,
+        lastMessageSender:'Sinan',
         avatar: require('../images/profile1.jpg'),
-        image: require('../images/image1.webp')
+        badge:1
+
     },
     {
         id:'8',
-        name:'Murshid',
-        text:'wish murshid birthday ' ,
-        timestamp:'yestarday',
+        name:'BackEnd Team',
+        lastMessage:'Arsalan',
+        lastMessageSender:'Api scene done hogya h kiya?',
+        avatar: require('../images/react-native.png'),
     },
     {
         id:'9',
-        name:'Sinan Lakhani',
-        text:'Sinan shared a photo of yours' ,
-        timestamp:'yestarday',
-        avatar: require('../images/profile1.jpg'),
+        name:'School Friends',
+        lastMessage:'Bhaio school mei chlty h ',
+        lastMessageSender:'Awais',
+        avatar: require('../images/react-native.png'),
+        badge:3
     },
     
 ]
