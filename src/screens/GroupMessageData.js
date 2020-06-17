@@ -70,8 +70,8 @@ const Data = [
     {
         id:'8',
         name:'BackEnd Team',
-        lastMessage:'Arsalan',
-        lastMessageSender:'Api scene done hogya h kiya?',
+        lastMessageSender:'Arsalan',
+        lastMessage:'Api scene done hogya h kiya?',
         avatar: require('../images/react-native.png'),
     },
     {

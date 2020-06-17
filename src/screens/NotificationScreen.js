@@ -40,9 +40,8 @@ export default class NotificationScreen extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '3px' }}>Posts</Text>
+                    <Text style={{ color: 'white', fontSize: 15, fontWeight: '3px' }}>Notifications</Text>
                 </View>
-
                 <FlatList
                     style={styles.feed}
                     data={notifications}
