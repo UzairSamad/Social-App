@@ -30,6 +30,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import PostScreen from './src/screens/PostScreen'
 import NotificationScreen from './src/screens/NotificationScreen'
 import MessageScreen from './src/screens/MessageScreen'
+import GroupMessage from './src/screens/GroupMessage'
 import ProfileScreen from './src/screens/ProfileScreen'
 
 
@@ -96,7 +97,7 @@ const App = () => {
           <MaterialIcon style={[{ color: 'white' }]} size={25} name='add-circle-outline' />
         )
       }} />
-      <MaterialBottomTab.Screen name="Message" component={MessageScreen} options={{
+      <MaterialBottomTab.Screen name="Message" children={createTopTabs} options={{
         tabBarLabel: 'Message',
         tabBarIcon: () => (
           <Icon style={[{ color: 'white' }]} size={25} name='wechat' />
@@ -129,13 +130,12 @@ const App = () => {
       <Stack.Screen name="Bottom Tab" children={createBottomTabs} /> */}
     </Stack.Navigator>
 
-  // let createTopTabs = () => {
-  //   return <MaterialTopTab.Navigator>
-  //     <MaterialTopTab.Screen name="Tab1" component={Tab1} options={{ title: 'Chat' }} />
-  //     <MaterialTopTab.Screen name="Tab2" component={Tab2} options={{ title: 'Status' }} />
-  //     <MaterialTopTab.Screen name="Tab3" component={Tab3} options={{ title: 'Call' }} />
-  //   </MaterialTopTab.Navigator>
-  // }
+  let createTopTabs = () => {
+    return <MaterialTopTab.Navigator>
+      <MaterialTopTab.Screen name="Chat" component={MessageScreen} />
+      <MaterialTopTab.Screen name="Groups" component={GroupMessage} />
+    </MaterialTopTab.Navigator>
+  }
 
 
   return (

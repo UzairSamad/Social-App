@@ -1,12 +1,8 @@
 
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native'
-import Data from './MessageData'
+import notifications from './notificationdata'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import CheckIcon from 'react-native-vector-icons/MaterialCommunityIcons'
-
-import { Badge } from 'react-native-paper'
-
 
 export default class NotificationScreen extends Component {
 
@@ -18,24 +14,22 @@ export default class NotificationScreen extends Component {
                     <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                         <View>
                             <Text style={styles.name}>{post.name}</Text>
+                            {/* <Text style={styles.timestamp}>{}</Text> */}
                         </View>
-                        {post.badge && <Badge style={{ backgroundColor: '#1390dd', marginVertical: 5, marginHorizontal: 4 }}>{post.badge}</Badge>}
+                        <Text style={styles.timestamp}>{post.timestamp}</Text>
                     </View>
                     <View>
 
-                        <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1  }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                                {post.text &&
-                                    <Text style={styles.post} style={{ marginTop: 5 }}>
-                                        {post.deliverd === true ?
-                                            <CheckIcon name={'check-all'} style={{ color: '#C4C6CE' }} size={20}/> :
-                                            <CheckIcon name={'check-all'} style={{ color: '#0069d9' }}  size={20}/>
-                                        }
-                                        {post.text}</Text>}
+                            {post.text && <Text style={styles.post} style={{ marginTop: 5 }}> {post.text}</Text>}
 
-                                <View></View>
+{post.image && <Image source={post.image} style={styles.notificationImage} resizeMode="cover" />}
                             </View>
+
+                           
                         </View>
+
                     </View>
 
                 </View>
@@ -45,9 +39,11 @@ export default class NotificationScreen extends Component {
     render() {
         return (
             <View style={styles.container}>
+               
+
                 <FlatList
                     style={styles.feed}
-                    data={Data}
+                    data={notifications}
                     renderItem={({ item }) => this.renderNotifications(item)}
                     keyExtractor={item => item.id}
                     showsVerticalScrollIndicator={false}
@@ -79,15 +75,15 @@ const styles = StyleSheet.create({
 
     },
     feed: {
-        marginHorizontal: 1
+        marginHorizontal: 16
 
     },
     feedItem: {
         backgroundColor: '#FFF',
         borderRadius: 5,
-        padding: 6,
+        padding: 5,
         flexDirection: 'row',
-        marginVertical: 1
+        marginVertical: 4
     },
     avatar: {
         width: 38,
@@ -95,13 +91,13 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         marginRight: 14
     },
-    notificationImage: {
+    notificationImage:{
 
         width: 38,
         height: 38,
         borderRadius: 12,
         marginRight: 14,
-        marginTop: 5
+        marginTop:5
     },
     timestamp: {
         fontSize: 11,
@@ -111,8 +107,7 @@ const styles = StyleSheet.create({
     name: {
         fontSize: 15,
         color: '#454d65',
-        fontWeight: "500",
-
+        fontWeight: "500"
 
     },
     post: {
